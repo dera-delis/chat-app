@@ -1,8 +1,4 @@
-# README.md (Project 6)
-
-You can copy-paste this directly 👇
-
-💬 Real-Time Chat App (Full Stack)
+# 💬 Real-Time Chat App (Full Stack)
 
 A modern, real-time chat application built with React, Tailwind CSS, and FastAPI WebSockets.
 This frontend consumes a production-deployed Chat API, supporting authenticated users, chat rooms, live messaging, and online presence.
