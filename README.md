@@ -1,118 +1,170 @@
-# Real-Time Chat Application (Frontend)
+# README.md (Project 6)
 
-A production-ready real-time chat application frontend built with React, TypeScript, and Tailwind CSS. This frontend consumes the deployed Real-Time Chat API backend.
+You can copy-paste this directly 👇
 
-## Features
+💬 Real-Time Chat App (Full Stack)
 
-- 🔐 **Authentication**: Signup and login with JWT token management
-- 💬 **Real-Time Messaging**: WebSocket-based real-time chat
-- 🏠 **Chat Rooms**: Create, join, and leave chat rooms
-- 👥 **Online Presence**: See who's online in each room
-- 🎨 **Modern UI**: Clean, WhatsApp/Slack-inspired interface
-- 📱 **Responsive**: Works on desktop and mobile devices
+A modern, real-time chat application built with React, Tailwind CSS, and FastAPI WebSockets.
+This frontend consumes a production-deployed Chat API, supporting authenticated users, chat rooms, live messaging, and online presence.
 
-## Tech Stack
+🚀 Backend powered by FastAPI + WebSockets + Redis  
+🌐 Frontend deployed on Vercel
 
-- **React 18** with TypeScript
-- **Vite** for build tooling
-- **React Router** for navigation
-- **Axios** for REST API calls
-- **Native WebSocket API** for real-time communication
-- **Tailwind CSS** for styling
-- **Context API** for state management
+🚀 Live Demo
 
-## Prerequisites
+Chat App (Frontend): https://chat-app.vercel.app
 
-- Node.js 18+ and npm (or yarn/pnpm)
+Chat API (Backend): https://chat-api.northflank.app
 
-## Installation
+API Docs: https://chat-api.northflank.app/docs
 
-1. Install dependencies:
+🏗️ Architecture Overview
+```
+┌───────────────┐
+│   React App   │
+│ (Vercel)     │
+└──────┬────────┘
+       │ HTTPS / WSS
+┌──────▼────────────────────────────┐
+│   FastAPI Chat API (Northflank)   │
+│  - JWT Auth                       │
+│  - REST (rooms, messages)         │
+│  - WebSockets (real-time chat)    │
+└──────┬───────────────┬────────────┘
+       │               │
+┌──────▼──────┐   ┌────▼─────┐
+│ PostgreSQL  │   │  Redis   │
+│ (Messages)  │   │ Pub/Sub  │
+└─────────────┘   └──────────┘
+```
+
+🛠️ Tech Stack
+
+Frontend
+- React 18
+- Vite
+- Tailwind CSS
+- React Router
+- Axios
+- WebSocket API
+- JWT-based auth
+
+Backend (Consumed API)
+- FastAPI
+- WebSockets
+- Redis (Pub/Sub & presence)
+- PostgreSQL
+- JWT Authentication
+
+✨ Features
+
+💬 Chat
+- Real-time messaging (WebSockets)
+- Multiple chat rooms
+- Persistent chat history
+- System messages (join/leave)
+
+👤 Authentication
+- Login & signup
+- JWT stored securely
+- Protected routes
+
+🟢 Presence
+- Online/offline indicators
+- Live user lists per room
+
+🎨 UI / UX
+- Clean WhatsApp-style interface
+- Responsive (mobile + desktop)
+- Auto-scroll messages
+- Message timestamps
+
+📸 Screenshots
+(Add later)
+- Login Page
+- Chat Room List
+- Live Chat Interface
+- Online Users Sidebar
+
+📁 Project Structure
+```
+chat-app/
+├── src/
+│   ├── api/                # Axios + WebSocket clients
+│   ├── auth/               # Auth context & guards
+│   ├── components/         # Reusable UI components
+│   ├── pages/
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   ├── Rooms.jsx
+│   │   └── ChatRoom.jsx
+│   ├── hooks/              # Custom hooks (useWebSocket, useAuth)
+│   ├── layouts/
+│   ├── utils/
+│   ├── App.jsx
+│   └── main.jsx
+├── public/
+├── .env.example
+├── package.json
+├── tailwind.config.js
+└── README.md
+```
+
+🔐 Environment Variables
+`.env.example`
+```
+VITE_API_BASE_URL=https://chat-api.northflank.app
+VITE_WS_BASE_URL=wss://chat-api.northflank.app
+```
+
+🔌 WebSocket Usage
+```js
+const ws = new WebSocket(
+  `${import.meta.env.VITE_WS_BASE_URL}/ws/chat/${roomId}?token=${token}`
+);
+```
+
+🧪 Local Development
 ```bash
+git clone https://github.com/dera-delis/chat-app.git
+cd chat-app
 npm install
-```
-
-2. Create a `.env` file in the root directory:
-```env
-VITE_API_BASE_URL=https://p01--chat-api--jlcf9gxkjgjx.code.run
-VITE_WS_BASE_URL=wss://p01--chat-api--jlcf9gxkjgjx.code.run
-```
-
-## Development
-
-Run the development server:
-```bash
 npm run dev
 ```
 
-The app will be available at `http://localhost:5173`
+App runs at:  
+http://localhost:5173
 
-## Building for Production
+🚀 Deployment (Vercel)
 
-Build the production bundle:
-```bash
-npm run build
-```
+Framework: Vite  
+Build Command: npm run build  
+Output: dist  
 
-The output will be in the `dist` directory, ready for deployment to Vercel or any static hosting service.
+Environment Variables:
+- VITE_API_BASE_URL
+- VITE_WS_BASE_URL
 
-## Project Structure
+🎯 Why This Project Matters
 
-```
-src/
-├── api/              # API client modules
-│   ├── auth.ts      # Authentication API
-│   ├── rooms.ts     # Rooms API
-│   ├── messages.ts  # Messages API
-│   ├── presence.ts  # Presence API
-│   ├── websocket.ts # WebSocket client
-│   └── axios.ts     # Axios configuration
-├── context/         # React Context providers
-│   ├── AuthContext.tsx
-│   └── ChatContext.tsx
-├── pages/           # Page components
-│   ├── Login.tsx
-│   ├── Signup.tsx
-│   ├── Rooms.tsx
-│   └── ChatRoom.tsx
-├── components/      # Reusable components
-│   ├── Sidebar.tsx
-│   ├── ChatWindow.tsx
-│   ├── MessageBubble.tsx
-│   └── PresenceList.tsx
-├── hooks/           # Custom hooks
-│   └── useWebSocket.ts
-├── App.tsx          # Main app component
-└── main.tsx         # Entry point
-```
+This project demonstrates:
+- ✅ Real-time frontend systems
+- ✅ WebSocket integration with auth
+- ✅ Consuming a deployed backend API
+- ✅ Production-ready environment handling
+- ✅ Clean UI + scalable architecture
 
-## Backend API
+Together with the Chat API, this forms a complete real-time system.
 
-This frontend consumes the Real-Time Chat API backend:
-- **Base URL**: `https://p01--chat-api--jlcf9gxkjgjx.code.run`
-- **WebSocket URL**: `wss://p01--chat-api--jlcf9gxkjgjx.code.run`
-- **API Docs**: `https://p01--chat-api--jlcf9gxkjgjx.code.run/docs`
+📄 License
 
-## Usage
+MIT License
 
-1. **Sign Up**: Create a new account
-2. **Log In**: Authenticate with your credentials
-3. **Create/Join Rooms**: Create new chat rooms or join existing ones
-4. **Chat**: Send and receive messages in real-time
-5. **See Presence**: View who's online in each room
+👨‍💻 Author
 
-## Deployment
+Dera Delis
 
-This project is configured for deployment on Vercel:
+GitHub: https://github.com/dera-delis
 
-1. Push your code to GitHub
-2. Import the project in Vercel
-3. Add environment variables:
-   - `VITE_API_BASE_URL`
-   - `VITE_WS_BASE_URL`
-4. Deploy!
-
-## License
-
-MIT
+LinkedIn: https://linkedin.com/in/dera-delis
 
