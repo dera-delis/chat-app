@@ -94,23 +94,45 @@ Backend (Consumed API)
 chat-app/
 ├── src/
 │   ├── api/                # Axios + WebSocket clients
+│   │   ├── auth.ts
+│   │   ├── axios.ts
+│   │   ├── messages.ts
+│   │   ├── presence.ts
+│   │   └── rooms.ts
 │   ├── components/         # Reusable UI components
+│   │   ├── ChatWindow.tsx
+│   │   ├── MessageBubble.tsx
+│   │   ├── PresenceList.tsx
+│   │   └── Sidebar.tsx
 │   ├── context/            # Auth + chat context
+│   │   ├── AuthContext.tsx
+│   │   └── ChatContext.tsx
 │   ├── pages/
 │   │   ├── Login.tsx
 │   │   ├── Signup.tsx
 │   │   ├── Rooms.tsx
 │   │   └── ChatRoom.tsx
 │   ├── hooks/              # Custom hooks
+│   │   └── useWebSocket.ts
 │   ├── routes/             # Route guards
+│   │   ├── ProtectedRoute.tsx
+│   │   └── PublicRoute.tsx
 │   ├── types/              # Shared types
+│   │   ├── auth.ts
+│   │   └── chat.ts
 │   ├── utils/
+│   │   └── env.ts
 │   ├── websocket/          # WS client
+│   │   └── ChatWebSocket.ts
 │   ├── App.tsx
 │   └── main.tsx
 ├── screenshots/
+├── index.html
 ├── package.json
+├── tsconfig.json
+├── tsconfig.node.json
 ├── tailwind.config.js
+├── vite.config.ts
 └── README.md
 ```
 
