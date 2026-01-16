@@ -74,11 +74,20 @@ Backend (Consumed API)
 - Message timestamps
 
 📸 Screenshots
-(Add later)
-- Login Page
-- Chat Room List
-- Live Chat Interface
-- Online Users Sidebar
+
+### 🔐 Authentication
+![Login](screenshots/login.png)
+![Signup](screenshots/signup.png)
+
+### 🏠 Chat Rooms
+![Rooms](screenshots/rooms.png)
+
+### 💬 Live Chat
+![Public](screenshots/public-room.png)
+![Private](screenshots/private-room.png)
+
+### 🟢 Create Room
+![Create Room](screenshots/create-room.png)
 
 📁 Project Structure
 ```
