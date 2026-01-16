@@ -4,11 +4,10 @@ A modern, real-time chat application built with React, Tailwind CSS, and FastAPI
 This frontend consumes a production-deployed Chat API, supporting authenticated users, chat rooms, live messaging, and online presence.
 
 🚀 Backend powered by FastAPI + WebSockets + Redis  
-🌐 Frontend deployed on Vercel
+🌐 Frontend built with React (Vite) + Tailwind CSS
 
 🚀 Live Demo
 
-[![Live Frontend](https://img.shields.io/badge/Live%20Frontend-Open-2ea44f?style=for-the-badge)](https://chat-app.vercel.app)
 [![Live Backend](https://img.shields.io/badge/Live%20Backend-Open-2ea44f?style=for-the-badge)](https://p01--chat-api--jlcf9gxkjgjx.code.run)
 [![API Docs](https://img.shields.io/badge/API%20Docs-Open-0ea5e9?style=for-the-badge)](https://p01--chat-api--jlcf9gxkjgjx.code.run/docs)
 
@@ -94,27 +93,27 @@ Backend (Consumed API)
 chat-app/
 ├── src/
 │   ├── api/                # Axios + WebSocket clients
-│   ├── auth/               # Auth context & guards
 │   ├── components/         # Reusable UI components
+│   ├── context/            # Auth + chat context
 │   ├── pages/
-│   │   ├── Login.jsx
-│   │   ├── Register.jsx
-│   │   ├── Rooms.jsx
-│   │   └── ChatRoom.jsx
-│   ├── hooks/              # Custom hooks (useWebSocket, useAuth)
-│   ├── layouts/
+│   │   ├── Login.tsx
+│   │   ├── Signup.tsx
+│   │   ├── Rooms.tsx
+│   │   └── ChatRoom.tsx
+│   ├── hooks/              # Custom hooks
+│   ├── routes/             # Route guards
+│   ├── types/              # Shared types
 │   ├── utils/
-│   ├── App.jsx
-│   └── main.jsx
-├── public/
-├── .env.example
+│   ├── websocket/          # WS client
+│   ├── App.tsx
+│   └── main.tsx
+├── screenshots/
 ├── package.json
 ├── tailwind.config.js
 └── README.md
 ```
 
 🔐 Environment Variables
-`.env.example`
 ```
 VITE_API_BASE_URL=https://p01--chat-api--jlcf9gxkjgjx.code.run
 VITE_WS_BASE_URL=wss://p01--chat-api--jlcf9gxkjgjx.code.run
