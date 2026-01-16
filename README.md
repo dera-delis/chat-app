@@ -9,8 +9,8 @@ This frontend consumes a production-deployed Chat API, supporting authenticated 
 🚀 Live Demo
 
 [![Live Frontend](https://img.shields.io/badge/Live%20Frontend-Open-2ea44f?style=for-the-badge)](https://chat-app.vercel.app)
-[![Live Backend](https://img.shields.io/badge/Live%20Backend-Open-2ea44f?style=for-the-badge)](https://chat-api.northflank.app)
-[![API Docs](https://img.shields.io/badge/API%20Docs-Open-0ea5e9?style=for-the-badge)](https://chat-api.northflank.app/docs)
+[![Live Backend](https://img.shields.io/badge/Live%20Backend-Open-2ea44f?style=for-the-badge)](https://p01--chat-api--jlcf9gxkjgjx.code.run)
+[![API Docs](https://img.shields.io/badge/API%20Docs-Open-0ea5e9?style=for-the-badge)](https://p01--chat-api--jlcf9gxkjgjx.code.run/docs)
 
 🏗️ Architecture Overview
 ```
@@ -116,8 +116,8 @@ chat-app/
 🔐 Environment Variables
 `.env.example`
 ```
-VITE_API_BASE_URL=https://chat-api.northflank.app
-VITE_WS_BASE_URL=wss://chat-api.northflank.app
+VITE_API_BASE_URL=https://p01--chat-api--jlcf9gxkjgjx.code.run
+VITE_WS_BASE_URL=wss://p01--chat-api--jlcf9gxkjgjx.code.run
 ```
 
 🔌 WebSocket Usage
