@@ -8,11 +8,9 @@ This frontend consumes a production-deployed Chat API, supporting authenticated 
 
 🚀 Live Demo
 
-Chat App (Frontend): https://chat-app.vercel.app
-
-Chat API (Backend): https://chat-api.northflank.app
-
-API Docs: https://chat-api.northflank.app/docs
+[![Live Frontend](https://img.shields.io/badge/Live%20Frontend-Open-2ea44f?style=for-the-badge)](https://chat-app.vercel.app)
+[![Live Backend](https://img.shields.io/badge/Live%20Backend-Open-2ea44f?style=for-the-badge)](https://chat-api.northflank.app)
+[![API Docs](https://img.shields.io/badge/API%20Docs-Open-0ea5e9?style=for-the-badge)](https://chat-api.northflank.app/docs)
 
 🏗️ Architecture Overview
 ```
@@ -160,7 +158,6 @@ MIT License
 
 Dera Delis
 
-GitHub: https://github.com/dera-delis
-
-LinkedIn: https://linkedin.com/in/dera-delis
+[![GitHub](https://img.shields.io/badge/GitHub-Profile-181717?style=for-the-badge&logo=github)](https://github.com/dera-delis)
+[![LinkedIn](https://img.shields.io/badge/LinkedIn-Connect-0A66C2?style=for-the-badge&logo=linkedin)](https://linkedin.com/in/dera-delis)
 
