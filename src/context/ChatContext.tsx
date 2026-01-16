@@ -12,7 +12,7 @@ interface ChatContextType {
   setCurrentRoom: (room: Room | null) => void;
   setMessages: (messages: Message[]) => void;
   addMessage: (message: Message) => void;
-  setRooms: (rooms: Room[]) => void;
+  setRooms: React.Dispatch<React.SetStateAction<Room[]>>;
   isConnected: boolean;
   typingUsers: { user_id: number; username: string }[];
 }
@@ -20,7 +20,7 @@ interface ChatContextType {
 const ChatContext = createContext<ChatContextType | undefined>(undefined);
 
 export const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
-  const { token, user } = useAuth();
+  const { token } = useAuth();
   const [currentRoom, setCurrentRoom] = useState<Room | null>(null);
   const [messages, setMessages] = useState<Message[]>([]);
   const [rooms, setRooms] = useState<Room[]>([]);
@@ -156,27 +156,32 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
           );
         }
 
-        if (wsMessage.type === 'typing' && wsMessage.user_id && wsMessage.username) {
+        if (wsMessage.type === 'typing') {
+          const userId = wsMessage.user_id;
+          const username = wsMessage.username;
+          if (!userId || !username) {
+            return;
+          }
           setTypingUsers((prev) => {
-            const exists = prev.some((u) => u.user_id === wsMessage.user_id);
+            const exists = prev.some((u) => u.user_id === userId);
             if (wsMessage.is_typing) {
-              return exists ? prev : [...prev, { user_id: wsMessage.user_id, username: wsMessage.username }];
+              return exists ? prev : [...prev, { user_id: userId, username }];
             }
-            return prev.filter((u) => u.user_id !== wsMessage.user_id);
+            return prev.filter((u) => u.user_id !== userId);
           });
 
-          const existingTimeout = typingTimeoutsRef.current.get(wsMessage.user_id);
+          const existingTimeout = typingTimeoutsRef.current.get(userId);
           if (existingTimeout) {
             clearTimeout(existingTimeout);
           }
           if (wsMessage.is_typing) {
             const timeout = setTimeout(() => {
-              setTypingUsers((prev) => prev.filter((u) => u.user_id !== wsMessage.user_id));
-              typingTimeoutsRef.current.delete(wsMessage.user_id);
+              setTypingUsers((prev) => prev.filter((u) => u.user_id !== userId));
+              typingTimeoutsRef.current.delete(userId);
             }, 2000);
-            typingTimeoutsRef.current.set(wsMessage.user_id, timeout);
+            typingTimeoutsRef.current.set(userId, timeout);
           } else {
-            typingTimeoutsRef.current.delete(wsMessage.user_id);
+            typingTimeoutsRef.current.delete(userId);
           }
         }
         
@@ -264,6 +269,7 @@ export const ChatProvider: React.FC<{ children: ReactNode }> = ({ children }) =>
     addMessage,
     setRooms,
     isConnected,
+    typingUsers,
   };
 
   return <ChatContext.Provider value={value}>{children}</ChatContext.Provider>;
