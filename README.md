@@ -6,6 +6,8 @@ This frontend consumes a production-deployed Chat API, supporting authenticated 
 🚀 Backend powered by FastAPI + WebSockets + Redis  
 🌐 Frontend built with React (Vite) + Tailwind CSS
 
+![TypeScript](https://img.shields.io/badge/TypeScript-Strict-blue)
+
 🚀 Live Demo
 
 [![Live Frontend](https://img.shields.io/badge/Live%20Frontend-Open-2ea44f?style=for-the-badge)](https://chat-app-eta-ochre.vercel.app/)
@@ -180,6 +182,11 @@ This project demonstrates:
 - ✅ Clean UI + scalable architecture
 
 Together with the Chat API, this forms a complete real-time system.
+
+🔒 Security Notes
+- JWT tokens are required for both REST and WebSocket connections
+- Unauthorized WebSocket connections are rejected during handshake
+- All protected routes are guarded on the frontend
 
 📄 License
 
