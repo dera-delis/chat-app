@@ -8,6 +8,7 @@ This frontend consumes a production-deployed Chat API, supporting authenticated 
 
 🚀 Live Demo
 
+[![Live Frontend](https://img.shields.io/badge/Live%20Frontend-Open-2ea44f?style=for-the-badge)](https://chat-app-eta-ochre.vercel.app/)
 [![Live Backend](https://img.shields.io/badge/Live%20Backend-Open-2ea44f?style=for-the-badge)](https://p01--chat-api--jlcf9gxkjgjx.code.run)
 [![API Docs](https://img.shields.io/badge/API%20Docs-Open-0ea5e9?style=for-the-badge)](https://p01--chat-api--jlcf9gxkjgjx.code.run/docs)
 
